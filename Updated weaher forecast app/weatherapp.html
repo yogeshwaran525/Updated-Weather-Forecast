@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEATHER FORECAST</title>
+    <!-- LEALAFT MAP API SCRIPT -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin="">
+   </script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>   
+    <!-- Social Media Icons -->
+    <script src="https://kit.fontawesome.com/6a6ad32422.js" crossorigin="anonymous"></script>
+    <!-- External css style sheet -->
+    <link rel="stylesheet" href="weatherapp.css">
+</head>
+<body>   
+    <header>
+        <div class="header" id="header">
+            <a href="#header"><img class="headimage" src="./weatherimage.png" alt=""></a>
+            <div class="headtext">WEATHER FORECAST</div><div class="empty"></div>
+        </div>
+    </header>
+    <main>
+        <!-- Bottom to top arrow -->
+        <a href="#" class="to-top"><i class="fa-sharp fa-solid fa-arrow-up"></i></a>
+        <!-- Search  Section (START)-->
+        <div class="search">
+            <form method="post" id="search">
+                <input type="text" class="search-bar" id="search-bar" placeholder="Enterlocation here">
+                <button type="submit" class="searchbutton" id="searchbutton" value="loc">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button> 
+            </form>
+                <button class="locationbutton" id="locationbutton">
+                    <i class="fa-sharp fa-solid fa-location-dot"></i>
+                </button>
+        </div>    <!-- Search  Section (END)-->
+         <!-- Front Page Animation (START) -->
+        <div id="loading">
+            <div id="loadingtext">Enter The Location to view weather forecast
+                <div id="bubbling-container">
+                    <div class="bubblingG">
+                        <span id="bubblingG_1"></span>
+                        <span id="bubblingG_2"></span>
+                        <span id="bubblingG_3"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Front Page Animation (END) -->
+        <!-- Bcackground Clouds Section (START) -->
+        <div id="background-wrap">
+            <div class="x1">
+                <div class="cloud"></div>
+            </div>
+            <div class="x2">
+                <div class="cloud"></div>
+            </div>
+            <div class="x3">
+                <div class="cloud"></div>
+            </div>
+            <div class="x4">
+                <div class="cloud"></div>
+            </div>
+            <div class="x5">
+                <div class="cloud"></div>
+            </div>
+        </div>
+        <!-- Bcackground Clouds Section (END) -->     
+        <div class="place" id="place"></div>
+        <!-- MAP Section -->
+        <div id="maps"></div>
+        <!-- Today's Forecast Section -->
+        <div class="container">
+            <div class="current-info">
+                <div class="date-container">
+                    <div class="time" id="time">
+                        10:00<span id="AM-PM">AM</span>
+                    </div>
+                    <div class="date" id="date">
+                        Sunday,29 Nov</div>
+                    <div class="others" id="current-weather-items">
+                        <!-- Content -->
+                        <!-- Content -->
+                        <!-- Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 3 days future forecast (START)-->
+        <div class="future-forecast">
+            <ul id="day" class="day">
+                <li id="day-container"></li>
+            </ul></div>
+        <!-- 3 days hourly forecast details (START) -->
+        <div id="hour-total" class="hour-total">
+            <div class="hour">
+                <div id="hour-date1"></div>
+                <ul id="hour-container1" class="hour-container"></ul>
+            </div>
+            <div class="hour">
+                <div id="hour-date2"></div>
+                <ul id="hour-container2" class="hour-container"></ul>
+            </div>
+            <div class="hour">
+                <div id="hour-date3"></div>
+                <ul id="hour-container3" class="hour-container"></ul>
+            </div>
+        </div>
+    </main>
+    <!-- 3 days hourly forecast details (END)-->
+    <!-- Line Chart Section of Day-01 Forecast -->
+    <h1 id="line_chart_text">LINE CHART DAY-01</h1>
+    <div class="chartbox">
+        <canvas id="canvas_day_1" class="chart"></canvas><br>
+    </div>
+    <!-- Line Chart Section of Day-02 Forecast -->
+    <h1 id="line_chart_text" >LINE CHART DAY-02</h1>
+    <div class="chartbox">
+        <canvas id="canvas_day_2" class="chart"></canvas><br>
+    </div>
+    <!-- Line Chart Section of Day-03 Forecast -->
+    <h1 id="line_chart_text">LINE CHART DAY-03</h1>
+    <div class="chartbox">
+        <canvas id="canvas_day_3" class="chart"></canvas><br>
+    </div>
+    <!-- footer section (START)-->
+    <footer>
+        <div id="footer-container">
+            <div id="footertop">
+                <div id="footertext">Design And developed by Yogeshwaran &nbsp;P&nbsp;
+                    <span id="footercopyrighticon"><i class="fa-regular fa-copyright"></i></span>
+                </div>
+            </div>
+            <div class="foootersocialicons">
+                <a href="https://www.linkedin.com/in/yogesh-waran-a280b2128/" target="_blank"><i
+                        class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/yogeshwaran525" target="_blank"><i
+                        class="fa-brands fa-square-github"></i></a>
+                <a href="https://www.instagram.com/_yogesh_y/" target="_blank"><i
+                        class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100009152763287" target="_blank"><i
+                        class="fa-brands fa-square-facebook"></i></a>
+            </div>
+        </div>        
+    </footer>
+    <!-- footer section (END) -->
+    <!-- Line graph or chart of hourly forecast datas using Chart JS  -->
+    <script  type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@4.1.1/dist/chart.umd.min.js"></script>
+    <!-- Date format in (DD-MM-YY)-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- External js file -->
+    <script src="weather.js"></script>
+</body>
+</html>
